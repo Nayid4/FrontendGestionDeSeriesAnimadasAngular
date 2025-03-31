@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { Router, RouterModule } from '@angular/router';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 
 import { AvatarModule } from 'primeng/avatar';
 import { MenubarModule } from 'primeng/menubar';
@@ -17,7 +17,7 @@ import { ButtonModule } from 'primeng/button';
     AvatarModule,
     MenubarModule,
     MenuModule,
-    ButtonModule
+    ButtonModule,
   ],
   templateUrl: './encabezado-administrador.component.html',
   styleUrl: './encabezado-administrador.component.css'
@@ -32,7 +32,11 @@ export class EncabezadoAdministradorComponent  implements OnInit{
 
   inicial: string = 'A'
 
-  constructor(private servicioAute: AutenticacionService, private router: Router) {
+  constructor(
+    private servicioAute: AutenticacionService, 
+    private router: Router,
+    private servicioMersaje: MessageService
+  ) {
     
   }
 
@@ -41,10 +45,10 @@ export class EncabezadoAdministradorComponent  implements OnInit{
     this.servicioAute.datosAutenticado$.subscribe({
       next: (datos) => {
         if (datos && datos.nombre) {
-          this.inicial = datos.nombre[0]; // Asignar la primera letra solo si hay un nombre
-          this.nombre = (datos.institucion ? datos.institucion + ' - ' : '') + datos.nombre;
+          this.inicial = datos.nombre[0]; 
+          this.nombre = datos.nombre + ' ' + datos.apellido;
         } else {
-          this.inicial = 'A';  // Valor por defecto si no hay datos
+          this.inicial = 'A';  
           this.nombre = '';
         }
       }
@@ -53,15 +57,12 @@ export class EncabezadoAdministradorComponent  implements OnInit{
 
 
     this.items = [
-      /*{
-        label: 'Cambiar Contraseña',
-        command: () => {}
-      },*/
       {
         label: 'Cerrar Sesión',
         command: () => {
           this.servicioAute.cerrarSesion()
           this.router.navigate(['/'])
+          this.servicioMersaje.add({ severity: 'success', summary: 'Exito', detail: 'Sesion cerrada' });
         }
       }
     ];

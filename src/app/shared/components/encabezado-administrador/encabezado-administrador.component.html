@@ -1,14 +1,15 @@
-<header class="w-full flex justify-between items-center z-50">
+<header class="w-full flex justify-between items-center z-50 p-2!">
     <div>
         <button (click)="toggleMenu.emit()"
-            class="border-none py-1 px-3 text-lg text-letra-gris-oscuro font-light bg-fondo-gris lg:hover:bg-fondo-verde lg:hover:text-letra-blanca cursor-pointer rounded-full" 
+            class="border-none py-1! px-3! text-lg text-gray-800 font-light bg-gray-300/50 lg:hover:bg-gray-800 lg:hover:text-white cursor-pointer rounded-full" 
         >
             <i class="pi pi-bars"></i>
         </button>
     </div>
 
-    <div class="flex items-center">
+    <div class="flex items-center gap-2">
         <span>{{nombre}}</span>
+
         <div class="flex items-center space-x-4 border-none">
             <p-menu #menu [model]="items" [popup]="true"></p-menu>
             <button 

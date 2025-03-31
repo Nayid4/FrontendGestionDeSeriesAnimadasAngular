@@ -8,9 +8,7 @@ export const GESTION_GENERO_ROUTES: Routes = [
         path: '',
         component: GestionGeneroLayoutComponent,
         children: [
-            { path: '', component: ListaGeneroComponent },
-            { path: 'crear', component: FormularioGeneroComponent },
-            { path: 'editar/:id', component: FormularioGeneroComponent }
+            { path: '', component: ListaGeneroComponent }
         ]
     }
 ];

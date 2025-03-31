@@ -1,23 +1,23 @@
 export interface ListaOpciones {
     id: number,
-    icono: string,
-    titulo: string,
-    roles: string[],
+    icon: string,
+    label: string,
+    roles?: string[],
     url: string,
     opciones: Opciones[]
 }
 
 export interface Opciones {
     id: number,
-    icono: string,
-    titulo: string,
+    icon: string,
+    label: string,
     url: string
 }
 
 export interface Opcion {
     id: number,
-    titulo: string,
-    icono: string,
+    label: string,
+    icon: string,
     ruta: string,
     descripcion: string,
 }

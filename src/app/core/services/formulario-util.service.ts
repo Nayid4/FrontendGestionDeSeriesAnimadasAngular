@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AlertaService } from './alerta.service';
+import { MessageService } from 'primeng/api';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormularioUtilService {
 
-  constructor(private alertaServicio: AlertaService) { }
+  constructor(private alertaServicio: MessageService) { }
 
   verificarFormulario(formulario: FormGroup): void {
     this.markFieldsAsTouched(formulario);
@@ -38,6 +39,11 @@ export class FormularioUtilService {
       message += invalidFields.join(', ');
     }
 
-    this.alertaServicio.mostrarAlerta('error', message);
+    this.alertaServicio.add({ severity: 'error', summary: 'Error', detail: message });
+  }
+
+  campoInvalido(formulario: FormGroup, nombreCampo: string): boolean {
+    const campo = formulario.get(nombreCampo);
+    return !!campo && campo.invalid && campo.touched;
   }
 }

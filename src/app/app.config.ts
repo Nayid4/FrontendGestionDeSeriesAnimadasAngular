@@ -36,7 +36,14 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-          preset: Aura
+          preset: Aura,
+          options: {
+              darkModeSelector: false || 'none',
+              /*cssLayer: {
+                name: 'primeng',
+                order: 'theme, base, primeng'
+            }*/
+          }
       },
       ripple: true,
       zIndex: {

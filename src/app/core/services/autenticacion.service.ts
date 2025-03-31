@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
@@ -7,6 +7,7 @@ import { DatosUsuario } from '../models/datosUsuario.model';
 import { InicioSesion } from '../models/inicioSesion.model';
 import { TokenUser } from '../models/token.model';
 import { BehaviorSubject } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -22,26 +23,31 @@ export class AutenticacionService {
   
   fechaNacimiento = signal<string>('');
 
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, 
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.autenticadoSubject.next(!!this.token);
+    }
+   }
 
-  getFechaNacimiento() : string {
-    return this.fechaNacimiento();
-  }
-
-  setFechaNacimiento(fecha: string) {
-    this.fechaNacimiento.set(fecha);
-  }
 
   getTokenUsuario(): boolean {
     return !!this.token;
   }
 
   get token(): string {
-    return this.cookieService.get(this.TOKEN_NAME) || '';
+    if (isPlatformBrowser(this.platformId)) {
+      return this.cookieService.get(this.TOKEN_NAME) || '';
+    }
+    return ''; // Si estamos en el servidor, devolvemos un string vacío
   }
 
   get refreshToken(): string {
-    return this.cookieService.get(this.REFRESH_TOKEN_NAME) || '';
+    if (isPlatformBrowser(this.platformId)) {
+      return this.cookieService.get(this.REFRESH_TOKEN_NAME) || '';
+    }
+    return '';
   }
 
   set token(valor: string) {

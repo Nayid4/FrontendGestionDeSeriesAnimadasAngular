@@ -1,5 +1,5 @@
 export interface Genero {
-    id: number,
+    id: string,
     nombre: string
 }
 

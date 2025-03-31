@@ -12,7 +12,9 @@ import { AutenticacionService } from '../../../core/services/autenticacion.servi
 export class PaginaNoEcontradaComponent implements OnInit {
   ruta: string = '/';
 
-  constructor(private servicioAutenticacion: AutenticacionService) {
+  constructor(
+    private servicioAutenticacion: AutenticacionService
+  ) {
     
   }
 
