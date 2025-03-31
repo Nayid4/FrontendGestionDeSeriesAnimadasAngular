@@ -9,7 +9,7 @@ export const INVITADO_ROUTES: Routes = [
         component: InvitadoLayoutComponent,
         children: [
             { path: '', component: InicioComponent },
-            { path: 'ver-pelicula/:id', component: VerPeliculaComponent }
+            { path: 'pelicula/:id', component: VerPeliculaComponent }
         ]
     }
 ]
