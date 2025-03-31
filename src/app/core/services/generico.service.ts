@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Estado } from '../models/estado.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,14 +37,6 @@ export class GenericoService<T,Tl> {
 
   Eliminar(id: string): Observable<void>{
     return this.http.delete<void>(`${this.api}/${this.endpoint}/${id}`);
-  }
-
-  CambiarEstado(id: string, datos: Estado): Observable<void>{
-    return this.http.put<void>(`${this.api}/${this.endpoint}/cambiar-estado/${id}`, datos);
-  }
-
-  ListarPorEstado(estado: string): Observable<T[]> {
-    return this.http.get<T[]>(`${this.api}/${this.endpoint}/listar-por-estado/${estado}`);
   }
 
   notifyUpdate(entidad: T) {
