@@ -90,21 +90,10 @@ export class FormularioPeliculaComponent implements OnInit, OnChanges {
       return;
     }
   
-    console.log('Pelicula:', Pelicula);
-    console.log('Lista de paises:', this.paises);
-    console.log('Lista de directores:', this.directores);
-    console.log('Lista de actores:', this.actores);
-  
-    console.log('Pelicula.pais.id:', Pelicula?.pais?.id);
-    console.log('Pelicula.director.id:', Pelicula?.director?.id);
-  
     const paisSeleccionado = this.paises.find(p => p.id === Pelicula?.pais?.id);
     const directorSeleccionado = this.directores.find(d => d.id === Pelicula?.director?.id);
     const actoresSeleccionados = this.actores.filter(a => Pelicula?.actores.some(pa => pa.id === a.id));
   
-    console.log('Pais seleccionado:', paisSeleccionado);
-    console.log('Director seleccionado:', directorSeleccionado);
-    console.log('Actores seleccionados:', actoresSeleccionados);
   
     this.formularioPelicula.patchValue({
       id: Pelicula?.id ?? '',
