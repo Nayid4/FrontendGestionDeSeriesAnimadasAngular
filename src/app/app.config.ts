@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(
       routes,
-      withDisabledInitialNavigation(),
+      //withDisabledInitialNavigation(),
       withComponentInputBinding(),
       withInMemoryScrolling({
         anchorScrolling: 'enabled',
