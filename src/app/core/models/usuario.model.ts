@@ -2,7 +2,8 @@ export interface Usuario {
     id: string,
     nombre: string,
     apellido: string,
-    nombreDeUsuario: string
+    nombreDeUsuario: string,
+    contrasena: string
 }
 
 export interface ComandoUsuario {

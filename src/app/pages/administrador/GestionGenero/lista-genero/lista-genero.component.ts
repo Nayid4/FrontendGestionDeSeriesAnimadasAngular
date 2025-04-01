@@ -59,8 +59,6 @@ export class ListaGeneroComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.registrar = '/dashboard/parametros/genero/registrar-genero';
-
     this.servicioGenero
       .ListarTodos()
       .pipe(takeUntil(this.unsubscribe$))
@@ -97,7 +95,7 @@ export class ListaGeneroComponent implements OnInit, OnDestroy {
     );
   }
 
-  registrarGenero(genero: any) {
+  registrarGenero(genero: ComandoGenero) {
     this.servicioGenero.Crear(genero).subscribe({
       next: () => {
         this.servicioMensaje.add({
@@ -106,7 +104,7 @@ export class ListaGeneroComponent implements OnInit, OnDestroy {
           detail: 'Genero Registrado',
         });
 
-        this.servicioGenero.notifyUpdate(genero);
+        this.servicioGenero.notifyRegistro(genero);
         this.ocultarFormulario();
       },
     })
