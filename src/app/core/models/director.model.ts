@@ -1,4 +1,4 @@
-import { Pais } from "./pais.model"
+import { ComandoPais, Pais } from "./pais.model"
 
 export interface Director {
     id: string,
@@ -10,5 +10,5 @@ export interface Director {
 export interface ComandoDirector {
     nombre: string,
     apellido: string,
-    idPais: string
+    pais: ComandoPais
 }

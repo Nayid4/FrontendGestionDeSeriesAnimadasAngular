@@ -4,5 +4,6 @@ export interface Pais {
 }
 
 export interface ComandoPais {
-    nombre: string
+    id?: string
+    nombre?: string
 }

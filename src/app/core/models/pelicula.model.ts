@@ -14,8 +14,8 @@ export interface Pelicula {
 }
 
 export interface ComandoPelicula {
-    idPais: string,
-    idDirector: string,
+    Pais: ComandoInfo,
+    Director: ComandoInfo,
     titulo: string,
     resena: string,
     imagenDePortada: string,
@@ -27,4 +27,8 @@ export interface ComandoPelicula {
 export interface RespuestaInfo {
     id: string,
     nombre: string
+}
+
+export interface ComandoInfo {
+    id: string
 }

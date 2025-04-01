@@ -1,4 +1,4 @@
-import { Pais } from "./pais.model"
+import { ComandoPais, Pais } from "./pais.model"
 
 export interface Actor {
     id: string,
@@ -10,5 +10,5 @@ export interface Actor {
 export interface ComandoActor {
     nombre: string,
     apellido: string,
-    idPais: string
+    pais: ComandoPais
 }
