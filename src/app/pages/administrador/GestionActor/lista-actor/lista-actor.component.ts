@@ -109,7 +109,9 @@ export class ListaActorComponent implements OnInit, OnDestroy {
   }
 
   registrarActor(Actor: ComandoActor) {
-    this.servicioActor.Crear(Actor).subscribe({
+    this.servicioActor.Crear(Actor)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
           severity: 'success',
@@ -124,7 +126,9 @@ export class ListaActorComponent implements OnInit, OnDestroy {
   }
 
   actualizarActor(Actor: Actor) {
-    this.servicioActor.Actualizar(Actor.id,Actor).subscribe({
+    this.servicioActor.Actualizar(Actor.id,Actor)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
         severity: 'success',
@@ -140,7 +144,9 @@ export class ListaActorComponent implements OnInit, OnDestroy {
   }
 
   eliminarActor(Actor: Actor) {
-    this.servicioActor.Eliminar(Actor.id).subscribe({
+    this.servicioActor.Eliminar(Actor.id)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
           severity: 'success',

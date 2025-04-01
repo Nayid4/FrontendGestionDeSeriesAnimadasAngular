@@ -97,7 +97,9 @@ export class ListaUsuarioComponent  implements OnInit, OnDestroy {
   }
 
   registrarUsuario(Usuario: ComandoUsuario) {
-    this.servicioUsuario.Crear(Usuario).subscribe({
+    this.servicioUsuario.Crear(Usuario)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
           severity: 'success',
@@ -112,7 +114,9 @@ export class ListaUsuarioComponent  implements OnInit, OnDestroy {
   }
 
   actualizarUsuario(Usuario: Usuario) {
-    this.servicioUsuario.Actualizar(Usuario.id,Usuario).subscribe({
+    this.servicioUsuario.Actualizar(Usuario.id,Usuario)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
         severity: 'success',
@@ -128,7 +132,9 @@ export class ListaUsuarioComponent  implements OnInit, OnDestroy {
   }
 
   eliminarUsuario(Usuario: Usuario) {
-    this.servicioUsuario.Eliminar(Usuario.id).subscribe({
+    this.servicioUsuario.Eliminar(Usuario.id)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
           severity: 'success',

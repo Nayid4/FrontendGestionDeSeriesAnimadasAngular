@@ -97,7 +97,9 @@ export class ListaPaisComponent implements OnInit, OnDestroy {
   }
 
   registrarPais(pais: ComandoPais) {
-    this.servicioPais.Crear(pais).subscribe({
+    this.servicioPais.Crear(pais)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
           severity: 'success',
@@ -112,7 +114,9 @@ export class ListaPaisComponent implements OnInit, OnDestroy {
   }
 
   actualizarPais(Pais: Pais) {
-    this.servicioPais.Actualizar(Pais.id,Pais).subscribe({
+    this.servicioPais.Actualizar(Pais.id,Pais)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
         severity: 'success',
@@ -128,7 +132,9 @@ export class ListaPaisComponent implements OnInit, OnDestroy {
   }
 
   eliminarPais(Pais: Pais) {
-    this.servicioPais.Eliminar(Pais.id).subscribe({
+    this.servicioPais.Eliminar(Pais.id)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
           severity: 'success',

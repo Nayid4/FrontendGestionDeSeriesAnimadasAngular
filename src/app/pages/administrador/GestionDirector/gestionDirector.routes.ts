@@ -9,9 +9,7 @@ export const GESTION_DIRECTOR_ROUTES: Routes = [
         path: '',
         component: GestionDirectorLayoutComponent,
         children: [
-            { path: '', component: ListaDirectorComponent },
-            { path: 'crear', component: FormularioDirectorComponent },
-            { path: 'editar/:id', component: FormularioDirectorComponent }
+            { path: '', component: ListaDirectorComponent }
         ]
     }
 ];

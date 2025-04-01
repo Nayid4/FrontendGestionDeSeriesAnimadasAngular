@@ -96,7 +96,9 @@ export class ListaGeneroComponent implements OnInit, OnDestroy {
   }
 
   registrarGenero(genero: ComandoGenero) {
-    this.servicioGenero.Crear(genero).subscribe({
+    this.servicioGenero.Crear(genero)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
           severity: 'success',
@@ -111,7 +113,9 @@ export class ListaGeneroComponent implements OnInit, OnDestroy {
   }
 
   actualizarGenero(genero: Genero) {
-    this.servicioGenero.Actualizar(genero.id,genero).subscribe({
+    this.servicioGenero.Actualizar(genero.id,genero)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
         severity: 'success',
@@ -127,7 +131,9 @@ export class ListaGeneroComponent implements OnInit, OnDestroy {
   }
 
   eliminarGenero(genero: Genero) {
-    this.servicioGenero.Eliminar(genero.id).subscribe({
+    this.servicioGenero.Eliminar(genero.id)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe({
       next: () => {
         this.servicioMensaje.add({
           severity: 'success',
