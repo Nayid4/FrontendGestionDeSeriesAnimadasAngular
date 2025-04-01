@@ -3,6 +3,7 @@ import { Genero } from "./genero.model";
 import { Pais } from "./pais.model";
 
 export interface Pelicula {
+    id: string,
     pais: Pais,
     director: RespuestaInfo,
     titulo: string,
@@ -14,8 +15,8 @@ export interface Pelicula {
 }
 
 export interface ComandoPelicula {
-    Pais: ComandoInfo,
-    Director: ComandoInfo,
+    pais: ComandoInfo,
+    director: ComandoInfo,
     titulo: string,
     resena: string,
     imagenDePortada: string,

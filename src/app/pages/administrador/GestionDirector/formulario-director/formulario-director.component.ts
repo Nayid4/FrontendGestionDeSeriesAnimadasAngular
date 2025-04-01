@@ -77,10 +77,7 @@ export class FormularioDirectorComponent implements OnInit, OnChanges {
       id: Director?.id ?? '',
       nombre: Director?.nombre ?? '',
       apellido: Director?.apellido ?? '',
-      pais: {
-        id: Director?.pais?.id ?? '',
-        nombre: Director?.pais?.nombre ?? '',
-      },
+      pais: this.paises.find(pais => pais.id === Director?.pais?.id)!
     });
   }
 
