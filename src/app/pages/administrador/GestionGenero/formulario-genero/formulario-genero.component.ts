@@ -51,7 +51,6 @@ export class FormularioGeneroComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.inicializarFormulario();
-    console.log(this.genero);
     if (this.genero) {
       this.titulo = 'Editar Genero';
       this.tipo = 'Editar';
