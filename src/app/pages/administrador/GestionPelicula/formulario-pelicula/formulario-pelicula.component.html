@@ -70,13 +70,12 @@
 
         <label for="CodigoDeTrailerEnYoutube" class="flex flex-col gap-2 font-bold">
             Código del Trailer
-            <textarea 
+            <input 
                 formControlName="CodigoDeTrailerEnYoutube" 
                 placeholder="Ingrese la reseña de la película"
-                class="w-full border-2 border-gray-400 rounded-md p-2! font-normal resize-none" 
-                rows="4"
+                class="w-full border-2 border-gray-400 rounded-md p-2! font-normal " 
                 [ngClass]="{'border-red-500': this.campoInvalido('CodigoDeTrailerEnYoutube')}"
-            ></textarea>
+            />
         </label>
 
         <label for="generos" class="flex flex-col gap-2 font-bold">
@@ -87,6 +86,7 @@
                 optionLabel="nombre"
                 placeholder="Selecciona géneros"
                 class="w-full border-2 border-gray-400 rounded-md font-normal"
+                appendTo="body"
                 [ngClass]="{'border-red-500!': this.campoInvalido('generos')}"
             ></p-multiSelect>
         </label>
@@ -99,6 +99,7 @@
                 optionLabel="nombre"
                 placeholder="Selecciona actores"
                 class="w-full border-2 border-gray-400 rounded-md font-normal"
+                appendTo="body"
                 [ngClass]="{'border-red-500!': this.campoInvalido('actores')}"
             ></p-multiSelect>
         </label>

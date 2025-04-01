@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PeliculaService } from '../../../core/services/pelicula.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Pelicula } from '../../../core/models/pelicula.model';
@@ -12,11 +12,15 @@ import { TarjetaPeliculaComponent } from '../../../shared/components/tarjeta-pel
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css',
 })
-export class InicioComponent implements OnInit {
+export class InicioComponent implements OnInit, OnDestroy {
   listaPeliculas: Pelicula[] = [];
   private unsubscribe$ = new Subject<void>();
 
   constructor(private servicioPelicula: PeliculaService) {}
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 
   ngOnInit(): void {
     this.servicioPelicula
