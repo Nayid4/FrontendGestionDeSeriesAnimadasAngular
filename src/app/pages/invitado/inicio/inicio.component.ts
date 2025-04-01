@@ -3,17 +3,22 @@ import { PeliculaService } from '../../../core/services/pelicula.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Pelicula } from '../../../core/models/pelicula.model';
 import { TarjetaPeliculaComponent } from '../../../shared/components/tarjeta-pelicula/tarjeta-pelicula.component';
+import { BuscarPeliculaPipe } from "../../../shared/pipes/buscar-pelicula.pipe";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-inicio',
   imports: [
-    TarjetaPeliculaComponent
-  ],
+    TarjetaPeliculaComponent,
+    BuscarPeliculaPipe,
+    FormsModule
+],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css',
 })
 export class InicioComponent implements OnInit, OnDestroy {
   listaPeliculas: Pelicula[] = [];
+  busqueda: string = '';
   private unsubscribe$ = new Subject<void>();
 
   constructor(private servicioPelicula: PeliculaService) {}
